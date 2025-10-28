@@ -73,4 +73,5 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
   test('48. deve calcular o dobro de um número', () => { expect(dobro(10)).toBe(20); });
   test('49. deve calcular o triplo de um número', () => { expect(triplo(10)).toBe(30); });
   test('50. deve calcular a metade de um número', () => { expect(metade(20)).toBe(10); });
+  test('51. isMaiorQue deve retornar false quando os números são iguais', () => { expect(isMaiorQue(5, 5)).toBe(false);});
 });
