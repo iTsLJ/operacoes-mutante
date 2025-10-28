@@ -74,4 +74,7 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
   test('49. deve calcular o triplo de um número', () => { expect(triplo(10)).toBe(30); });
   test('50. deve calcular a metade de um número', () => { expect(metade(20)).toBe(10); });
   test('51. isMaiorQue deve retornar false quando os números são iguais', () => { expect(isMaiorQue(5, 5)).toBe(false);});
+  test('52. divisao deve lançar erro ao dividir por zero', () => { expect(() => divisao(5, 0)).toThrow('Divisão por zero não é permitida.');});
+  test('53. raizQuadrada deve calcular corretamente a raiz de um número positivo', () => {expect(raizQuadrada(16)).toBe(4);});
+  test('54. raizQuadrada deve lançar erro ao receber número negativo', () => {expect(() => raizQuadrada(-9)).toThrow('Não é possível calcular a raiz quadrada de um número negativo.');});
 });
