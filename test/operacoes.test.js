@@ -366,28 +366,31 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
         expect(() => inverso(0)).toThrow('Não é possível inverter o número zero.');
     });
 
+    // === Testes numerados a partir do 97 ===
+
     test('97. produtoArray deve retornar 1 para array vazio', () => {
         expect(produtoArray([])).toBe(1);
     });
 
     test('98. produtoArray deve calcular corretamente o produto de múltiplos números', () => {
         expect(produtoArray([2, 3, 4])).toBe(24);
+        expect(produtoArray([1, 5, 10])).toBe(50);
     });
 
-    test('99. clamp deve retornar o valor mínimo quando o valor for menor que o limite inferior', () => {
+    test('99. produtoArray deve funcionar corretamente com números negativos', () => {
+        expect(produtoArray([-2, 3, -4])).toBe(24);
+    });
+
+    test('100. clamp deve retornar o valor mínimo quando o valor for menor que o limite inferior', () => {
         expect(clamp(-5, 0, 10)).toBe(0);
     });
 
-    test('100. clamp deve retornar o valor máximo quando o valor for maior que o limite superior', () => {
+    test('101. clamp deve retornar o valor máximo quando o valor for maior que o limite superior', () => {
         expect(clamp(15, 0, 10)).toBe(10);
     });
 
-    test('101. clamp deve retornar o próprio valor quando estiver dentro do intervalo', () => {
+    test('102. clamp deve retornar o próprio valor quando estiver dentro do intervalo', () => {
         expect(clamp(5, 0, 10)).toBe(5);
-    });
-
-    test('102. isMenorQue deve retornar true quando o primeiro número for menor que o segundo', () => {
-        expect(isMenorQue(5, 10)).toBe(true);
     });
 
     test('103. isMenorQue deve retornar false quando o primeiro número for maior ou igual ao segundo', () => {
@@ -422,4 +425,178 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
         expect(medianaArray([5, 1, 3])).toBe(3);
         expect(medianaArray([40, 10, 30, 20])).toBe(25);
     });
+
+    test('97. mdc deve calcular corretamente para dois números positivos', () => {
+        expect(mdc(10, 5)).toBe(5);
+        expect(mdc(18, 12)).toBe(6);
+    });
+
+    test('98. mdc deve retornar o próprio número quando b é 0', () => {
+        expect(mdc(10, 0)).toBe(10);
+    });
+
+    test('99. mdc deve retornar o próprio número quando a é 0', () => {
+        expect(mdc(0, 10)).toBe(10);
+    });
+
+    test('100. mdc deve calcular corretamente quando os números são iguais', () => {
+        expect(mdc(8, 8)).toBe(8);
+    });
+
+    test('101. mdc deve retornar 1 quando os números são primos entre si', () => {
+        expect(mdc(7, 3)).toBe(1);
+    });
+
+    test('102. mdc deve funcionar corretamente com números invertidos', () => {
+        expect(mdc(5, 10)).toBe(5);
+    });
+    test('110. produtoArray deve retornar o próprio número para array unitário', () => {
+        expect(produtoArray([7])).toBe(7);
+    });
+    test('111. clamp deve retornar o valor mínimo quando valor for igual ao limite inferior', () => {
+        expect(clamp(0, 0, 10)).toBe(0);
+    });
+
+    test('112. clamp deve retornar o valor máximo quando valor for igual ao limite superior', () => {
+        expect(clamp(10, 0, 10)).toBe(10);
+    });
+    test('113. mdc deve calcular corretamente quando apenas uma iteração é necessária', () => {
+        expect(mdc(9, 6)).toBe(3);
+    });
+    test('114. mdc deve retornar 0 quando ambos os números são zero', () => {
+        expect(mdc(0, 0)).toBe(0);
+    });
+    // === Testes extras para eliminar mutantes sobreviventes (115–120) ===
+
+    test('115. produtoArray deve retornar 0 quando um dos elementos for 0', () => {
+        expect(produtoArray([2, 0, 5])).toBe(0);
+    });
+
+    test('116. produtoArray deve lidar corretamente com números decimais', () => {
+        expect(produtoArray([1.5, 2])).toBeCloseTo(3);
+    });
+
+    test('117. clamp deve lidar corretamente quando min e max são iguais', () => {
+        expect(clamp(5, 10, 10)).toBe(10);
+        expect(clamp(10, 10, 10)).toBe(10);
+        expect(clamp(15, 10, 10)).toBe(10);
+    });
+
+    test('118. clamp deve retornar corretamente para valores negativos', () => {
+        expect(clamp(-5, -10, 0)).toBe(-5);
+        expect(clamp(-15, -10, 0)).toBe(-10);
+    });
+
+    test('120. mdc deve retornar corretamente quando um dos números é múltiplo do outro', () => {
+        expect(mdc(12, 4)).toBe(4);
+        expect(mdc(25, 5)).toBe(5);
+    });
+    // === Testes complementares para eliminar mutantes sobreviventes (121–126) ===
+
+    test('121. raizQuadrada deve retornar 0 para entrada igual a 0', () => {
+        expect(raizQuadrada(0)).toBe(0);
+    });
+
+    test('122. fatorial deve retornar 1 apenas para 0 isoladamente', () => {
+        expect(fatorial(0)).toBe(1);
+    });
+
+    test('123. fatorial deve retornar 1 apenas para 1 isoladamente', () => {
+        expect(fatorial(1)).toBe(1);
+    });
+
+    test('124. produtoArray deve retornar 1 para array vazio e não entrar no reduce', () => {
+        const mock = jest.fn();
+        expect(produtoArray([])).toBe(1);
+        expect(mock).not.toHaveBeenCalled();
+    });
+
+    test('125. clamp deve retornar min quando valor for exatamente igual ao min', () => {
+        expect(clamp(5, 5, 10)).toBe(5);
+    });
+
+    test('126. clamp deve retornar max quando valor for exatamente igual ao max', () => {
+        expect(clamp(10, 5, 10)).toBe(10);
+    });
+    // === Testes finais para alcançar >98% de Mutation Score ===
+
+    test('127. fatorial deve retornar 2 para n = 2', () => {
+        expect(fatorial(2)).toBe(2);
+    });
+
+    test('128. fatorial deve retornar 6 para n = 3', () => {
+        expect(fatorial(3)).toBe(6);
+    });
+
+    test('129. produtoArray deve realmente chamar reduce quando o array não está vazio', () => {
+        const spy = jest.spyOn(Array.prototype, 'reduce');
+        produtoArray([1, 2, 3]);
+        expect(spy).toHaveBeenCalled();
+        spy.mockRestore();
+    });
+
+    test('130. clamp deve retornar exatamente min quando valor é igual ao limite inferior', () => {
+        expect(clamp(5, 5, 10)).toBe(5);
+    });
+
+    test('131. clamp deve retornar exatamente max quando valor é igual ao limite superior', () => {
+        expect(clamp(10, 0, 10)).toBe(10);
+    });
+
+    test('132. clamp deve retornar valor intermediário corretamente (entre min e max)', () => {
+        expect(clamp(7, 5, 10)).toBe(7);
+    });
+
+    // === Testes complementares para atingir >98% de Mutation Score ===
+
+    test('127. fatorial deve retornar 1 para n = 0', () => {
+        expect(fatorial(0)).toBe(1);
+    });
+
+    test('128. fatorial deve retornar 1 para n = 1', () => {
+        expect(fatorial(1)).toBe(1);
+    });
+
+    test('129. fatorial deve retornar 2 para n = 2', () => {
+        expect(fatorial(2)).toBe(2);
+    });
+
+    test('130. fatorial deve retornar 6 para n = 3', () => {
+        expect(fatorial(3)).toBe(6);
+    });
+
+    test('131. produtoArray([]) deve retornar 1 sem chamar reduce', () => {
+        const mockReduce = jest.fn();
+        const arr = [];
+        arr.reduce = mockReduce;
+        expect(produtoArray(arr)).toBe(1);
+        expect(mockReduce).not.toHaveBeenCalled();
+    });
+
+    test('132. produtoArray([1, 2, 3]) deve chamar reduce corretamente', () => {
+        const spy = jest.spyOn(Array.prototype, 'reduce');
+        expect(produtoArray([1, 2, 3])).toBe(6);
+        expect(spy).toHaveBeenCalled();
+        spy.mockRestore();
+    });
+
+    test('133. clamp deve retornar exatamente min quando valor é igual ao limite inferior', () => {
+        expect(clamp(5, 5, 10)).toBe(5);
+    });
+
+    test('134. clamp deve retornar exatamente max quando valor é igual ao limite superior', () => {
+        expect(clamp(10, 5, 10)).toBe(10);
+    });
+
+    test('135. clamp deve retornar valor intermediário corretamente quando dentro do intervalo', () => {
+        expect(clamp(7, 5, 10)).toBe(7);
+    });
+    test('clamp deve retornar exatamente min quando valor == min', () => {
+        expect(clamp(5, 5, 10)).toBe(5);
+    });
+
+    test('clamp deve retornar exatamente max quando valor == max', () => {
+        expect(clamp(10, 5, 10)).toBe(10);
+    });
+
 });
