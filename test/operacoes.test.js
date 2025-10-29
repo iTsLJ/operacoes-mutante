@@ -138,36 +138,57 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
         expect(minimoArray([-5, 0, 10])).toBe(-5);
     });
     // isPar
-    test('isPar deve retornar true para número par positivo', () => {
+    test('69.isPar deve retornar true para número par positivo', () => {
         expect(isPar(4)).toBe(true);
     });
 
-    test('isPar deve retornar false para número ímpar positivo', () => {
+    test('70.isPar deve retornar false para número ímpar positivo', () => {
         expect(isPar(5)).toBe(false);
     });
 
-    test('isPar deve retornar true para zero', () => {
+    test('71.isPar deve retornar true para zero', () => {
         expect(isPar(0)).toBe(true);
     });
 
-    test('isPar deve retornar true para número par negativo', () => {
+    test('72.isPar deve retornar true para número par negativo', () => {
         expect(isPar(-8)).toBe(true);
     });
 
     // isImpar
-    test('isImpar deve retornar true para número ímpar positivo', () => {
+    test('73.isImpar deve retornar true para número ímpar positivo', () => {
         expect(isImpar(7)).toBe(true);
     });
 
-    test('isImpar deve retornar false para número par positivo', () => {
+    test('74.isImpar deve retornar false para número par positivo', () => {
         expect(isImpar(10)).toBe(false);
     });
 
-    test('isImpar deve retornar false para zero', () => {
+    test('75.isImpar deve retornar false para zero', () => {
         expect(isImpar(0)).toBe(false);
     });
 
-    test('isImpar deve retornar true para número ímpar negativo', () => {
+    test('76.isImpar deve retornar true para número ímpar negativo', () => {
         expect(isImpar(-3)).toBe(true);
+    });
+    test('77.deve retornar false para 0 e 1', () => {
+        expect(isPrimo(0)).toBe(false);
+        expect(isPrimo(1)).toBe(false);
+    });
+
+    test('78.deve retornar true para números primos', () => {
+        expect(isPrimo(2)).toBe(true);
+        expect(isPrimo(3)).toBe(true);
+        expect(isPrimo(7)).toBe(true);
+        expect(isPrimo(13)).toBe(true);
+    });
+
+    test('79.deve retornar false para números compostos', () => {
+        expect(isPrimo(4)).toBe(false);
+        expect(isPrimo(9)).toBe(false);
+        expect(isPrimo(15)).toBe(false);
+    });
+
+    test('80.deve retornar false para números negativos', () => {
+        expect(isPrimo(-5)).toBe(false);
     });
 });
