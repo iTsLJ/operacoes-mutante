@@ -94,22 +94,47 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
         expect(fatorial(4)).toBe(24);
         expect(fatorial(5)).toBe(120);
     });
-    describe('Função mediaArray', () => {
-        test('deve retornar 0 para array vazio', () => {
-            expect(mediaArray([])).toBe(0);
-        });
-
-        test('59.deve calcular corretamente a média de números positivos', () => {
-            expect(mediaArray([2, 4, 6, 8])).toBe(5);
-        });
-
-        test('60.deve calcular corretamente a média de números negativos', () => {
-            expect(mediaArray([-2, -4, -6, -8])).toBe(-5);
-        });
-
-        test('61.deve calcular corretamente a média de números mistos', () => {
-            expect(mediaArray([-2, 2, 6])).toBeCloseTo(2);
-        });
+    test('deve retornar 0 para array vazio', () => {
+        expect(mediaArray([])).toBe(0);
     });
 
+    test('59.deve calcular corretamente a média de números positivos', () => {
+        expect(mediaArray([2, 4, 6, 8])).toBe(5);
+    });
+
+    test('60.deve calcular corretamente a média de números negativos', () => {
+        expect(mediaArray([-2, -4, -6, -8])).toBe(-5);
+    });
+
+    test('61.deve calcular corretamente a média de números mistos', () => {
+        expect(mediaArray([-2, 2, 6])).toBeCloseTo(2);
+    });
+    test('62.deve lançar erro para array vazio', () => {
+        expect(() => maximoArray([]))
+            .toThrow('Array vazio не possui valor máximo.');
+    });
+
+    test('63.deve retornar o maior número do array', () => {
+        expect(maximoArray([1, 50, 10])).toBe(50);
+    });
+
+    test('64.deve funcionar com números negativos', () => {
+        expect(maximoArray([-5, -2, -10])).toBe(-2);
+    });
+    test('65.deve lançar erro para array vazio', () => {
+        expect(() => minimoArray([]))
+            .toThrow('Array vazio не possui valor mínimo.');
+    });
+
+    test('66.deve retornar o menor número do array', () => {
+        expect(minimoArray([10, 5, 20])).toBe(5);
+    });
+
+    test('67.deve funcionar com números negativos', () => {
+        expect(minimoArray([-10, -5, -20])).toBe(-20);
+    });
+
+    test('68.deve funcionar com números mistos (positivos e negativos)', () => {
+        expect(minimoArray([-5, 0, 10])).toBe(-5);
+    });
 });
