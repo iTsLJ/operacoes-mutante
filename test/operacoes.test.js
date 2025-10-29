@@ -137,4 +137,37 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
     test('68.deve funcionar com números mistos (positivos e negativos)', () => {
         expect(minimoArray([-5, 0, 10])).toBe(-5);
     });
+    // isPar
+    test('isPar deve retornar true para número par positivo', () => {
+        expect(isPar(4)).toBe(true);
+    });
+
+    test('isPar deve retornar false para número ímpar positivo', () => {
+        expect(isPar(5)).toBe(false);
+    });
+
+    test('isPar deve retornar true para zero', () => {
+        expect(isPar(0)).toBe(true);
+    });
+
+    test('isPar deve retornar true para número par negativo', () => {
+        expect(isPar(-8)).toBe(true);
+    });
+
+    // isImpar
+    test('isImpar deve retornar true para número ímpar positivo', () => {
+        expect(isImpar(7)).toBe(true);
+    });
+
+    test('isImpar deve retornar false para número par positivo', () => {
+        expect(isImpar(10)).toBe(false);
+    });
+
+    test('isImpar deve retornar false para zero', () => {
+        expect(isImpar(0)).toBe(false);
+    });
+
+    test('isImpar deve retornar true para número ímpar negativo', () => {
+        expect(isImpar(-3)).toBe(true);
+    });
 });
