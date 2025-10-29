@@ -366,4 +366,60 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
         expect(() => inverso(0)).toThrow('Não é possível inverter o número zero.');
     });
 
+    test('97. produtoArray deve retornar 1 para array vazio', () => {
+        expect(produtoArray([])).toBe(1);
+    });
+
+    test('98. produtoArray deve calcular corretamente o produto de múltiplos números', () => {
+        expect(produtoArray([2, 3, 4])).toBe(24);
+    });
+
+    test('99. clamp deve retornar o valor mínimo quando o valor for menor que o limite inferior', () => {
+        expect(clamp(-5, 0, 10)).toBe(0);
+    });
+
+    test('100. clamp deve retornar o valor máximo quando o valor for maior que o limite superior', () => {
+        expect(clamp(15, 0, 10)).toBe(10);
+    });
+
+    test('101. clamp deve retornar o próprio valor quando estiver dentro do intervalo', () => {
+        expect(clamp(5, 0, 10)).toBe(5);
+    });
+
+    test('102. isMenorQue deve retornar true quando o primeiro número for menor que o segundo', () => {
+        expect(isMenorQue(5, 10)).toBe(true);
+    });
+
+    test('103. isMenorQue deve retornar false quando o primeiro número for maior ou igual ao segundo', () => {
+        expect(isMenorQue(10, 5)).toBe(false);
+        expect(isMenorQue(10, 10)).toBe(false);
+    });
+
+    test('104. isEqual deve retornar true para números iguais', () => {
+        expect(isEqual(7, 7)).toBe(true);
+    });
+
+    test('105. isEqual deve retornar false para números diferentes', () => {
+        expect(isEqual(7, 8)).toBe(false);
+    });
+
+    test('106. medianaArray deve lançar erro para array vazio', () => {
+        expect(() => medianaArray([]))
+            .toThrow('Array vazio не possui mediana.');
+    });
+
+    test('107. medianaArray deve calcular corretamente a mediana de array ímpar', () => {
+        expect(medianaArray([1, 3, 5])).toBe(3);
+        expect(medianaArray([10, 5, 20])).toBe(10);
+    });
+
+    test('108. medianaArray deve calcular corretamente a mediana de array par', () => {
+        expect(medianaArray([1, 2, 3, 4])).toBe(2.5);
+        expect(medianaArray([10, 20, 30, 40])).toBe(25);
+    });
+
+    test('109. medianaArray deve funcionar corretamente com números desordenados', () => {
+        expect(medianaArray([5, 1, 3])).toBe(3);
+        expect(medianaArray([40, 10, 30, 20])).toBe(25);
+    });
 });
