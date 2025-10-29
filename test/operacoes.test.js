@@ -77,4 +77,39 @@ describe('Suíte de Testes Fraca para 50 Operações Aritméticas', () => {
   test('52. divisao deve lançar erro ao dividir por zero', () => { expect(() => divisao(5, 0)).toThrow('Divisão por zero não é permitida.');});
   test('53. raizQuadrada deve calcular corretamente a raiz de um número positivo', () => {expect(raizQuadrada(16)).toBe(4);});
   test('54. raizQuadrada deve lançar erro ao receber número negativo', () => {expect(() => raizQuadrada(-9)).toThrow('Não é possível calcular a raiz quadrada de um número negativo.');});
+    test('55.fatorial deve lançar erro para número negativo', () => {
+        expect(() => fatorial(-5))
+            .toThrow('Fatorial não é definido para números negativos.');
+    });
+
+    test('56.fatorial deve retornar 1 para 0', () => {
+        expect(fatorial(0)).toBe(1);
+    });
+
+    test('57.fatorial deve retornar 1 para 1', () => {
+        expect(fatorial(1)).toBe(1);
+    });
+
+    test('58.fatorial deve calcular corretamente para números positivos maiores que 1', () => {
+        expect(fatorial(4)).toBe(24);
+        expect(fatorial(5)).toBe(120);
+    });
+    describe('Função mediaArray', () => {
+        test('deve retornar 0 para array vazio', () => {
+            expect(mediaArray([])).toBe(0);
+        });
+
+        test('59.deve calcular corretamente a média de números positivos', () => {
+            expect(mediaArray([2, 4, 6, 8])).toBe(5);
+        });
+
+        test('60.deve calcular corretamente a média de números negativos', () => {
+            expect(mediaArray([-2, -4, -6, -8])).toBe(-5);
+        });
+
+        test('61.deve calcular corretamente a média de números mistos', () => {
+            expect(mediaArray([-2, 2, 6])).toBeCloseTo(2);
+        });
+    });
+
 });
